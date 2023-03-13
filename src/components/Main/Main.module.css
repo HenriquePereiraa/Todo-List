@@ -17,10 +17,10 @@
   height: 3.2rem;
   padding-left: 1rem;
   border-radius: 8px;
-  border:1px solid transparent;
+  border: 1px solid transparent;
   background-color: var(--gray500);
   line-height: 140%;
-  transition: background-color .5s;
+  transition: background-color 0.5s;
   outline: none;
 }
 
@@ -33,11 +33,19 @@
   border-radius: 8px;
   transition: color 1s;
   cursor: pointer;
-  
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap:0.2rem
+}
+
+.mainForm button svg {
+  color: var(--gray100);
 }
 
 .mainForm input:focus {
-    border:1px solid var(--blueDark);
+  border: 1px solid var(--blueDark);
 }
 
 .mainForm button:hover {
