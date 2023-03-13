@@ -1,0 +1,45 @@
+.main {
+  max-width: 736px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.mainForm {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: calc(0px - 3.2rem / 2);
+}
+
+.mainForm input {
+  width: 638px;
+  height: 3.2rem;
+  padding-left: 1rem;
+  border-radius: 8px;
+  border:1px solid transparent;
+  background-color: var(--gray500);
+  line-height: 140%;
+  transition: background-color .5s;
+  outline: none;
+}
+
+.mainForm button {
+  width: 90px;
+  height: 3.2rem;
+  background-color: var(--blueDark);
+  color: var(--gray100);
+  border: 0;
+  border-radius: 8px;
+  transition: color 1s;
+  cursor: pointer;
+  
+}
+
+.mainForm input:focus {
+    border:1px solid var(--blueDark);
+}
+
+.mainForm button:hover {
+  background-color: var(--blue);
+}
