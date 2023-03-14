@@ -13,8 +13,8 @@ export function Main() {
 
   const [task, setTask] = useState("");
 
-  function handleAddNewTask(e:FormEvent) {
-    e.preventDefault()
+  function handleAddNewTask(e: FormEvent) {
+    e.preventDefault();
     const newTask = {
       task,
       finished: false,
@@ -53,16 +53,19 @@ export function Main() {
 
         <div className={styles.line}></div>
 
-        {/* <div className={styles.emptyList}>
-          <ClipboardText size={56} />
-          <strong>Você ainda não tem tarefas cadastradas </strong>
-          <span> Crie tarefas e organize seus itens a fazer</span>
-        </div> */}
-
-        <Todo />
-        <Todo />
-        <Todo />
-        <Todo />
+        {tasksList.length > 0 ? (
+          <>
+            {tasksList.map((task) => {
+              return <Todo key={task.task} task={task.task} finished={task.finished} />;
+            })}
+          </>
+        ) : (
+          <div className={styles.emptyList}>
+            <ClipboardText size={56} />
+            <strong>Você ainda não tem tarefas cadastradas </strong>
+            <span> Crie tarefas e organize seus itens a fazer</span>
+          </div>
+        )}
       </div>
     </div>
   );

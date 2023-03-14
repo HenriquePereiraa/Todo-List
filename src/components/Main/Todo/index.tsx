@@ -1,7 +1,12 @@
 import { Trash } from "phosphor-react";
 import styles from "./Todo.module.css";
 
-export function Todo() {
+interface TodoProps {
+  task: string;
+  finished: boolean;
+}
+
+export function Todo({ task, finished }: TodoProps) {
   return (
     <div className={styles.todoContainer}>
       <label className={styles.roundCheckbox}>
@@ -9,8 +14,7 @@ export function Todo() {
         <span className={styles.checkmark}></span>
       </label>
       <p className={styles.task}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
-        Duis vel sed fames integer.
+        {task}
       </p>
       <Trash weight="bold" />
     </div>
