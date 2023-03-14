@@ -1,6 +1,6 @@
 .todoContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 0.8rem;
   margin-bottom: 0.8rem;
@@ -21,6 +21,7 @@
 }
 
 .todoContainer > svg {
+  margin-left: auto;
   font-size: 1.3rem;
   color: var(--gray300);
   cursor: pointer;
