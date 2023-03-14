@@ -1,14 +1,41 @@
 import styles from "./Main.module.css";
 import { ClipboardText, PlusCircle } from "phosphor-react";
 import { Todo } from "./Todo";
+import { FormEvent, useState } from "react";
+
+interface Tasks {
+  task: string;
+  finished: boolean;
+}
 
 export function Main() {
+  const [tasksList, setTasksList] = useState<Tasks[]>([]);
+
+  const [task, setTask] = useState("");
+
+  function handleAddNewTask(e:FormEvent) {
+    e.preventDefault()
+    const newTask = {
+      task,
+      finished: false,
+    };
+
+    setTasksList((state) => [...state, newTask]);
+
+    setTask("");
+  }
+
   return (
     <div className={styles.main}>
       <form className={styles.mainForm}>
-        <input type="text" placeholder="Adicione uma nova tarefa" />
-        <button>
-          Criar <PlusCircle size={20} />{" "}
+        <input
+          type="text"
+          placeholder="Adicione uma nova tarefa"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+        />
+        <button onClick={handleAddNewTask}>
+          Criar <PlusCircle size={20} />
         </button>
       </form>
 
@@ -32,10 +59,10 @@ export function Main() {
           <span> Crie tarefas e organize seus itens a fazer</span>
         </div> */}
 
-        <Todo/>
-        <Todo/>
-        <Todo/>
-        <Todo/>
+        <Todo />
+        <Todo />
+        <Todo />
+        <Todo />
       </div>
     </div>
   );
