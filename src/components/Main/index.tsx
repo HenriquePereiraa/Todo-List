@@ -26,7 +26,6 @@ export function Main() {
   }
 
   function changeTaskToDone(taskChecked: string) {
-    console.log(taskChecked);
     const newTasksList = tasksList.map((task) => {
       if (task.taskTitle === taskChecked) {
         task.finished = !task.finished;
@@ -35,6 +34,14 @@ export function Main() {
     });
 
     setTasksList(newTasksList);
+  }
+
+  function deleteTaskFromList(taskToRemove: string) {
+    const newTaskList = tasksList.filter(
+      (task) => task.taskTitle !== taskToRemove
+    );
+
+    setTasksList(newTaskList);
   }
 
   return (
@@ -74,6 +81,7 @@ export function Main() {
                   task={task.taskTitle}
                   finished={task.finished}
                   checkTask={changeTaskToDone}
+                  deleteTask={deleteTaskFromList}
                 />
               );
             })}
