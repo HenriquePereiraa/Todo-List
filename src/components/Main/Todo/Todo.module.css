@@ -9,7 +9,7 @@
   border-radius: 8px;
 }
 
-.task{
+.task {
   color: var(--gray100);
   font-size: 0.88rem;
   line-height: 1.2rem;
@@ -75,4 +75,17 @@
   border: solid var(--gray100);
   border-width: 0 2px 2px 0;
   transform: rotate(40deg);
+}
+
+@media (max-width: 768px) {
+  .checkmark {
+    height: 15px;
+    width: 15px;
+  }
+  .roundCheckbox input[type="checkbox"]:checked + .checkmark::before {
+    left: 4px;
+    top: 1px;
+    width: 2px;
+    height: 6px;
+  }
 }

@@ -44,6 +44,12 @@
   color: var(--gray100);
 }
 
+@media (max-width: 768px) {
+  .mainForm button > svg {
+    display: none;
+  }
+}
+
 .mainForm input:focus {
   border: 1px solid var(--blueDark);
 }
@@ -103,7 +109,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding:4rem 0;
+  padding: 4rem 0;
 }
 
 .emptyList > svg {
@@ -111,7 +117,8 @@
   color: var(--gray400);
 }
 
-.emptyList span, strong {
+.emptyList span,
+strong {
   font-size: 1rem;
   line-height: 1.4rem;
   color: var(--gray300);
