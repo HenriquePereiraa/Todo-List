@@ -1,5 +1,6 @@
 import styles from "./Main.module.css";
 import { ClipboardText, PlusCircle } from "phosphor-react";
+import { Todo } from "./Todo";
 
 export function Main() {
   return (
@@ -25,11 +26,16 @@ export function Main() {
 
         <div className={styles.line}></div>
 
-        <div className={styles.emptyList}>
+        {/* <div className={styles.emptyList}>
           <ClipboardText size={56} />
           <strong>Você ainda não tem tarefas cadastradas </strong>
           <span> Crie tarefas e organize seus itens a fazer</span>
-        </div>
+        </div> */}
+
+        <Todo/>
+        <Todo/>
+        <Todo/>
+        <Todo/>
       </div>
     </div>
   );
