@@ -13,6 +13,10 @@ export function Main() {
 
   const [task, setTask] = useState("");
 
+  const numberTasksCompleted = tasksList.filter(
+    (task) => task.finished !== false
+  ).length;
+
   function handleAddNewTask(e: FormEvent) {
     e.preventDefault();
     const newTask = {
@@ -62,11 +66,15 @@ export function Main() {
         <div className={styles.todoListHeader}>
           <div className={styles.todoInfos}>
             <strong className={styles.blue}>Tarefas criadas</strong>
-            <span>0</span>
+            <span>{tasksList.length}</span>
           </div>
           <div className={styles.todoInfos}>
             <strong className={styles.purple}>Concluídas</strong>
-            <span>0</span>
+            <span>
+              {tasksList.length > 0
+                ? `${numberTasksCompleted} de ${tasksList.length}`
+                : 0}
+            </span>
           </div>
         </div>
 

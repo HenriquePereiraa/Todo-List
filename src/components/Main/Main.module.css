@@ -84,7 +84,8 @@
 
 .todoInfos span {
   background-color: var(--gray400);
-  width: 1.55rem;
+  flex:1;
+  padding:0 0.2rem;
   height: 1.2rem;
   border-radius: 8px;
   text-align: center;
