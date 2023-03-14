@@ -4,7 +4,7 @@ import { Todo } from "./Todo";
 import { FormEvent, useState } from "react";
 
 interface Tasks {
-  task: string;
+  taskTitle: string;
   finished: boolean;
 }
 
@@ -16,13 +16,25 @@ export function Main() {
   function handleAddNewTask(e: FormEvent) {
     e.preventDefault();
     const newTask = {
-      task,
+      taskTitle: task,
       finished: false,
     };
 
     setTasksList((state) => [...state, newTask]);
 
     setTask("");
+  }
+
+  function changeTaskToDone(taskChecked: string) {
+    console.log(taskChecked);
+    const newTasksList = tasksList.map((task) => {
+      if (task.taskTitle === taskChecked) {
+        task.finished = !task.finished;
+      }
+      return task;
+    });
+
+    setTasksList(newTasksList);
   }
 
   return (
@@ -56,7 +68,14 @@ export function Main() {
         {tasksList.length > 0 ? (
           <>
             {tasksList.map((task) => {
-              return <Todo key={task.task} task={task.task} finished={task.finished} />;
+              return (
+                <Todo
+                  key={task.taskTitle}
+                  task={task.taskTitle}
+                  finished={task.finished}
+                  checkTask={changeTaskToDone}
+                />
+              );
             })}
           </>
         ) : (
