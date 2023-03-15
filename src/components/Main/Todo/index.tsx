@@ -21,7 +21,7 @@ export function Todo({ task, finished, checkTask, deleteTask }: TodoProps) {
   return (
     <div className={styles.todoContainer}>
       <label className={styles.roundCheckbox}>
-        <input type="checkbox" onClick={handleCheckedTask} />
+        <input type="checkbox" onClick={handleCheckedTask} checked={finished} />
         <span className={styles.checkmark}></span>
       </label>
       <p className={finished ? styles.todoChecked : styles.task}>{task}</p>
