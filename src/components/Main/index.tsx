@@ -1,7 +1,7 @@
 import styles from "./Main.module.css";
 import { ClipboardText, PlusCircle } from "phosphor-react";
 import { Todo } from "./Todo";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 interface Tasks {
   taskTitle: string;
@@ -17,14 +17,29 @@ export function Main() {
     (task) => task.finished !== false
   ).length;
 
+  useEffect(() => {
+    const storedStateJSON = localStorage.getItem("@todo:cyclesState-1.0.0");
+
+    if (storedStateJSON) {
+      setTasksList(JSON.parse(storedStateJSON));
+    }
+  }, []);
+
   function handleAddNewTask(e: FormEvent) {
     e.preventDefault();
+
     const newTask = {
       taskTitle: task,
       finished: false,
     };
 
-    setTasksList((state) => [...state, newTask]);
+    setTasksList((state) => {
+      const stateJSON = JSON.stringify([...tasksList, newTask]);
+
+      localStorage.setItem("@todo:cyclesState-1.0.0", stateJSON);
+
+      return [...state, newTask];
+    });
 
     setTask("");
   }
@@ -37,7 +52,13 @@ export function Main() {
       return task;
     });
 
-    setTasksList(newTasksList);
+    setTasksList(() => {
+      const stateJSON = JSON.stringify(newTasksList);
+
+      localStorage.setItem("@todo:cyclesState-1.0.0", stateJSON);
+
+      return newTasksList;
+    });
   }
 
   function deleteTaskFromList(taskToRemove: string) {
@@ -45,7 +66,13 @@ export function Main() {
       (task) => task.taskTitle !== taskToRemove
     );
 
-    setTasksList(newTaskList);
+    setTasksList(() => {
+      const stateJSON = JSON.stringify(newTaskList);
+
+      localStorage.setItem("@todo:cyclesState-1.0.0", stateJSON);
+
+      return newTaskList;
+    });
   }
 
   return (
